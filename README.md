@@ -14,7 +14,7 @@
 -   MVP:
     -   An API that allows clients to retrieve the suburb information by postcode
     -   An API that allows clients to retrieve postcode given a suburb name
-    -   Secured APID to add new suburb and postcode combinations
+    -   Secured API to add new suburb and postcode combinations
     -   Database
     -   Tests for controller and service layers
 -   Stack used:
@@ -66,6 +66,11 @@
 -   Extended the expiry time of JWT tokens on the backend
 -   Added users to cohort response payload
 -   Centralized API base URL on frontend using the proxy `package.json` property
+
+### 05/09/2023- Added database data, Controller, Service and Repository layer
+
+-   Seeded database using Object Mapper on postcode JSON
+-   Added Entity, Controller, Repository and Service layers
 
 ---
 
