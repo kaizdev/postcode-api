@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.nology.postcodeapi.exceptions.NotFoundException;
+
 @RestController
 @RequestMapping("/postcode")
 public class PostcodeController {
@@ -19,17 +21,40 @@ public class PostcodeController {
 
   // CREATE
 
-  // READ
+  //& READ
+
+  // Get all postcodes and suburbs
   @GetMapping
   public ResponseEntity<List<Postcode>> getAll() {
     List<Postcode> allPostcodes = this.postcodeService.findAll();
     return new ResponseEntity<>(allPostcodes, HttpStatus.OK);
   }
 
-  // Get suburb based on postcode
+  // Get suburb(s) based on postcode
   @GetMapping("/{postcode}")
-  public ResponseEntity<Postcode> getByPostcode(@PathVariable String postcode) {
-    Optional<Postcode> foundPostcode =
+  public ResponseEntity<List<Postcode>> getByPostcode(
+    @PathVariable String postcode
+  ) {
+    List<Postcode> foundPostcodes =
       this.postcodeService.findByPostcode(postcode);
+    if (foundPostcodes.isEmpty()) {
+      throw new NotFoundException(
+        String.format("Postcode %d is not found", postcode)
+      );
+    }
+    return new ResponseEntity<>(foundPostcodes, HttpStatus.OK);
+  }
+
+  @GetMapping("suburb/{suburb}")
+  public ResponseEntity<List<Postcode>> getBySuburb(
+    @PathVariable String suburb
+  ) {
+    List<Postcode> foundSuburbs = this.postcodeService.findBySuburb(suburb);
+    if (foundSuburbs.isEmpty()) {
+      throw new NotFoundException(
+        String.format("Suburb %s is not found", suburb)
+      );
+    }
+    return new ResponseEntity<>(foundSuburbs, HttpStatus.OK);
   }
 }

@@ -1,7 +1,6 @@
 package io.nology.postcodeapi.postcode;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,12 @@ public class PostcodeService {
   }
 
   // Find by postcode
-  public Optional<Postcode> findByPostcode(String postcode) {
-    Optional<Postcode> maybePostcode = this.postcodeRepository.findBy()
+  public List<Postcode> findByPostcode(String postcode) {
+    return this.postcodeRepository.findByPostcode(postcode);
+  }
+
+  // Find by suburb
+  public List<Postcode> findBySuburb(String suburb) {
+    return this.postcodeRepository.findBySuburb(suburb);
   }
 }
