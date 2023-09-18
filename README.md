@@ -1,11 +1,7 @@
 # Postcode API
 
-{add test badges here, all projects you build from here on out will have tests, therefore you should have github workflow badges at the top of your repositories: [Github Workflow Badges](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge)}
-
-## Demo & Snippets
-
--   Include hosted link
--   Include images of app if CLI or Client App
+A Java & Spring Boot backend service for Australian postcodes.
+All users can retrieve postcodes, while Admins can create new postcode combinations
 
 ---
 
@@ -24,15 +20,20 @@
 
 ## Build Steps
 
--   how to build / run project
--   use proper code snippets if there are any commands to run
+-   Run the PostcodeapiApplication.java in `src/main/java/io/nology/postcodeapi/` folder
+-   Interact with the API using Postman or browser
+-   Endpoints are:
+    -   GET all -> localhost:8080/postcode
+    -   GET by postcode -> localhost:8080/postcode/{postcode}
+    -   GET by suburb -> localhost:8080/postcode/{suburb}
+    -   Test the admin (GET) -> localhost:8080/postcode/admin
+    -   POST new combination -> localhost:8080/postcode/admin
 
----
-
-## Design Goals / Approach
-
--   Design goals
--   why did you implement this the way you did?
+```bash
+Admin credentials:
+Username: admin
+Password: password
+```
 
 ---
 
@@ -46,20 +47,15 @@
 
 ## Known issues
 
--   Remaining bugs, things that have been left unfixed
--   Features that are buggy / flimsy
-
 ---
 
 ## Future Goals
 
--   What are the immediate features you'd add given more time
+-   Tests for the controller and service layer
 
 ---
 
 ## Change logs
-
--   Write a paragraph labelled with the date every day you work on the project to discuss what you've done for the say. Be specific about the changes that have happened for that day.
 
 ### 04/09/2023- Initial commit
 
@@ -72,21 +68,20 @@
 -   Seeded database using Object Mapper on postcode JSON
 -   Added Entity, Controller, Repository and Service layers
 
+### 18/09/2023- Added basic HTTP secure layer
+
+-   Secure layer added to /postcode/admin end point
+
 ---
 
 ## What did you struggle with?
 
--   What? Why? How?
+-
 
 ---
 
 ## Licensing Details
 
--   What type of license are you releasing this under?
+-   Feel free to use this code!
 
 ---
-
-## Further details, related projects, reimplementations
-
--   Is this project a reimplementation for something you've done in the past? if so explain it and link it here.
--   If it's an API, is there a client app that works with this project? link it
